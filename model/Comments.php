@@ -1,7 +1,7 @@
 <?php
 class Comments {
 
-    // Добавить комментарий к новости
+    // Добавить комментарий к новости. Дату берём из PHP, чтобы она была по эстонскому времени
     public static function insertComment(int $newsId, string $text): int {
         $db = new Database();
         return $db->executeRun(

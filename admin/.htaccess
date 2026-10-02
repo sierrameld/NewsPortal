@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+
+    # если такой файл или папка существуют, отдаём их как есть (public/css, public/js ...)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # всё остальное отправляем в admin/index.php
+    RewriteRule (.+) index.php [L]
+</IfModule>
+
+# Картинки новостей до 10 МБ (по умолчанию PHP принимает только 2 МБ)
+<IfModule mod_php.c>
+    php_value upload_max_filesize 10M
+    php_value post_max_size 12M
+</IfModule>

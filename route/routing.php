@@ -21,6 +21,12 @@ elseif ($path === 'insertcomment' && $_SERVER['REQUEST_METHOD'] === 'POST'
         && isset($_POST['id'], $_POST['comment'])) {
     Controller::InsertComment((int)$_POST['id'], (string)$_POST['comment']);
 }
+elseif ($path === 'registerForm') {
+    Controller::registerForm();
+}
+elseif ($path === 'registerAnswer' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    Controller::registerUser();
+}
 else {
     Controller::error404();
 }

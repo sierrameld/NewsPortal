@@ -1,4 +1,5 @@
 <?php
+// Модель отвечает только за данные: делает запрос и возвращает массив
 class News {
 
     // Подзапрос, который считает комментарии каждой новости (колонка comments_count)
@@ -12,7 +13,7 @@ class News {
         );
     }
 
-    // Все новости, новые сверху
+    // Все новости, свежие сверху
     public static function getAllNews(): array {
         $db = new Database();
         return $db->getAll('SELECT n.id, n.title, n.picture, ' . self::COUNT_SQL . ' FROM news n ORDER BY n.created_at DESC, n.id DESC');
@@ -27,7 +28,7 @@ class News {
         );
     }
 
-    // Одна новость (или false, если ничего не нашлось)
+    // Одна новость целиком. Если такой нет, вернётся false
     public static function getNewsByID(int $id) {
         $db = new Database();
         return $db->getOne('SELECT * FROM news WHERE id = ?', [$id]);

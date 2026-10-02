@@ -24,7 +24,7 @@ class ViewComments {
         echo '</tbody></table>';
     }
 
-    // Количество комментариев красным, для списков новостей. Если комментариев нет, ничего не выводится
+    // Количество комментариев красным, для списков новостей. Если комментариев нет, ничего не выводим
     public static function CommentsCount(int $count): void {
         if ($count > 0) {
             echo '<b><font color="red">(' . $count . ')</font></b>';

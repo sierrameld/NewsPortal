@@ -1,8 +1,10 @@
 <IfModule mod_rewrite.c>
     RewriteEngine on
 
+    # если такой файл или папка существуют, отдаём их как есть (style.css, images/...)
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
 
+    # всё остальное отправляем в index.php
     RewriteRule (.+) index.php [L]
 </IfModule>
